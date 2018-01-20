@@ -14,3 +14,11 @@ class Specinfra::Command::Linux::Base::Selinux < Specinfra::Command::Base::Selin
   end
 end
 
+#RedHat enterprice7
+#class Specinfra::Command::Redhat::V7::Service < Specinfra::Command::Redhat::Base::Service
+#  clsss << self
+#    include Specinfra::Command::Module::Systemd
+#  end
+#end
+#
+
