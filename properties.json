@@ -1,0 +1,9 @@
+{
+"host001.ex.com": {
+  "innodb_buffer_pool_size": 1024
+},
+"host002.ex.com": {
+  "innodb_buffer_pool_size": 2048
+}
+}
+
