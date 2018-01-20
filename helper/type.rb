@@ -7,7 +7,7 @@ module Serverspec
 	kernel_module linux_kernel_parameter lxc mial_alias package
 	php_config port ppa process routing_table selinux servie user
 	yumrepo windows_feature windows_hot_fix windows_register_key
-	windows_scheduled_task zfs
+	windows_scheduled_task zfs #osx_defaults
       }
 
       types.each {|type| require "serverspec/type/#{type}"}
