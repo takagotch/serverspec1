@@ -1,0 +1,12 @@
+- Rakefile
+- spec/
+  - app/
+    - ruby_spec.rb
+  - base/
+    - users_and_groups_spec.rb
+  - db/
+    - mysql_spec.rb
+  - proxy
+    - nginx_spec.rb
+- spec_helper.rb
+

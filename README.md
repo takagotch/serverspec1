@@ -73,3 +73,5 @@ specinfra/
 - type     #have,be,exist
 - matcher  #!have,be,exsit
 
+ln -s ./host001.ex.com spec/host002.ex.com
+
