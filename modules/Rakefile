@@ -1,0 +1,48 @@
+require 'rake'
+require 'rspec/core/rake_task'
+
+require 'json'
+
+def get_roles(node_file)
+  roles = []
+  JSON.parse(File.read(node_file)['run_list']).each do |role|
+    roles << roles.gsub(/role\[(.+)\]/, '\1')
+  end
+end
+
+def get_recipes(role)
+  recipes = []
+  JSON.parse(File.read("roles/#{role}.json"))['run_list'].each do |recipe|
+    recipes << recipe.gsub(/recipe\[(.+)\]/, '\1')
+  end
+
+  recipe
+end
+
+namespace :spec do
+  all = []
+
+  Dir.glob('nodes/*.json').each do |node_file|
+    recipes = []
+
+    get_role().each do |role|
+    end
+
+    recipes.flatten!
+
+    node = File.basename(node_file, '.json')
+    node_sbort = node.split('.')[0]
+
+    all << node_short
+
+    desc "Run serverspec to #{node_short}"
+    RSpec::Core::RakeTask.new(node_short) do |t|
+      ENV['TARGET_HOST'] = node
+      t.pattern = "site-cookbooks/#{recipes.json(',')}/spec/*_spec.rb"
+    end
+  end
+
+  task :all => all
+end
+
+

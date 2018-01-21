@@ -1,0 +1,25 @@
+- Rakefile
+- nodes/
+  - app001.ex.com.json
+  - app002.ex.com.json
+  - db001.ex.com.json
+  - db002.ex.com.json
+  - proxy001.ex.com.json
+  - proxy002.ex.com.json
+- roles/
+  - app.json
+  - db.json
+  - proxy.json
+- site-cookbooks/
+  - mysql/
+    - mysql_spec.rb
+      - mysql_spec.rb
+  - nginx/
+    - nginx_spec.rb
+  - ruby/
+    - spec/
+      - ruby_spec.rb
+- spec/
+  - spec_helper.rb
+
+
