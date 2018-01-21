@@ -1,4 +1,6 @@
-#ssh_options
+#ssh_options ,NetLLSSH::Config.for, Specinfra.configuration.ssh_optionsm .ssh/config, Net::SSH::start, Specinfra.configuration.ssh_options,
+#serverspec-init, spec_helper.rb, ASK_LOGIN_PASSWORD, LOGIN_PASSWORD
+#
 require 'highline/import'
 
 if ENV['ASK_LOGIN_PASSWORD']
@@ -9,7 +11,7 @@ end
 
 set :ssh_ooptions, options
 
-#pre_command
+#pre_command Serverpec, pre_command
 set :pre_command, 'source ~/.zshrc'
 
 describe file('/tmp') do
@@ -18,38 +20,39 @@ end
 
 source ~/.zshrc && test -d /tmp
 
-#env
+#env Specinfra.configure.env
 set :env, :LANG => 'C', :LC_MESSAGES => 'C'
 
-#path
+#path Specinfra.configure.path
 set :path, '/sbin:/usr/local/sbin:$PATH'
 
-#shell
+#shell Specinfra
 set :shell, '/bin/zsh'
 
-#sudo_path
+#sudo_path Specinfra
 set :sudo_path, '/user/sbin'
 
 #disable_sudo
 set :disable_sudo, true
 
-#request_pty
+#request_pty, etc/sudoers default: requiretty
 set :request_pty, true
 
-#sudo_options
+#sudo_options root, user, foo
 set :sudo_options, '-u foo'
 
-#let
-descirbe command('whoami') do
+#let Specinfra.configuration,subject
+##should subject: true
+describe command('whoami') do
   let(:disable_sudo){ true }
-  its(:stdout){ should match /foo/ }
+  its(:stdout){ should match /foo/ } 
 end
-
+##expect subject: false
 describe 'Command "whoami"' do
   let(:disable_sudo){ true }
-  it( expect(command('whoami').stdout).to match /foo/ )
+  it( expect(command('whoami').stdout).to match /foo/ ) #=> false
 end
-
+##ecpect subject: true
 describe ('whoami') do
   let(:disable_sudo){ true }
   it{ should(command('whoami').stdout).to match /foo/ }
